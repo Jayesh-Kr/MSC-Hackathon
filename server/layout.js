@@ -1,4 +1,4 @@
-import Timetable from "./model/TeacherTimeTableModel.js";
+import Layout from "./model/ClassLayoutModel.js";
 
 const roomLayoutData = [
     // Data for Teacher 1
@@ -157,7 +157,7 @@ const roomLayoutData = [
 ];
 
 function addRoom() {
-Timetable.insertMany(roomLayoutData)
+Layout.insertMany(roomLayoutData)
     .then(() => {
         console.log('Timetable data inserted successfully!');
         mongoose.connection.close();
@@ -169,4 +169,4 @@ Timetable.insertMany(roomLayoutData)
 
 }
 
-export default addRandom
+export default addRoom

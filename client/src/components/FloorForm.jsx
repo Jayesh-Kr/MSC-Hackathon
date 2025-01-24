@@ -174,7 +174,7 @@ useEffect(() => {
       <option value="4">4th Floor</option>
       <option value="4">5th Floor</option>
     </select>
-    <div className="btn" onClick={() => navigate('/timetable')}>
+    <div className="btn" onClick={() => {localStorage.setItem("room", JSON.stringify(selectedFloor,selectedBuilding,weekday)); navigate('/timetable')}}>
         Book
         </div>
   </div>

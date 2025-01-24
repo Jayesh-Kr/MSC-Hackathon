@@ -1,40 +1,61 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ClassBooking.css'; // Import CSS for styling
-
-// Mock data for room statuses (true = occupied, false = available)
-const initialRoomStatuses = {
-  V201: false,
-  V202: false,
-  V203: false,
-  V204: false,
-  V205: true,
-  V206: true,
-  V207: false,
-  V208: false,
-  V209: true,
-};
+import axios from "axios";
 
 const RoomBooking = () => {
-  const [roomStatuses, setRoomStatuses] = useState(initialRoomStatuses);
+  const [roomStatuses, setRoomStatuses] = useState([]); // Initialize as an empty array
+
+  useEffect(() => {
+    getLayout();
+  }, []);
+  
+
+  const getLayout = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/api/timetable/getLayout", {
+        block_name: "V",
+        floor: 1,
+      });
+      setRoomStatuses(response.data.layout); // Update roomStatuses with response data
+      console.log(response.data.layout);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const renderRoom = (room) => {
+    const isOccupied = room.occupied; // Use "occupied" from response data
+    return (
+      <div key={room.room_number} className={`room ${isOccupied ? 'occupied' : 'available'}`}>
+        {room.room_number}
+      </div>
+    );
+  };
+
+  const renderRooms = () => {
+    if (!roomStatuses || roomStatuses.length === 0) {
+      return <div>Loading rooms...</div>;
+    }
+
+    // Render rooms in two columns
+    const leftColumnRooms = roomStatuses.filter((_, index) => index % 2 === 0);
+    const rightColumnRooms = roomStatuses.filter((_, index) => index % 2 !== 0);
+
+    return (
+      <div className="floor-layout">
+        <div className="column">
+          {leftColumnRooms.map(renderRoom)}
+        </div>
+        <div className="column">
+          {rightColumnRooms.map(renderRoom)}
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div className="floor-layout">
-      {/* Left Column */}
-      <div className="column">
-        <div className={`room ${roomStatuses.V204 ? 'occupied' : 'available'}`}>V204</div>
-        <div className={`room ${roomStatuses.V203 ? 'occupied' : 'available'}`}>NEXT TECH Lab<br />V203</div>
-        <div className={`room ${roomStatuses.V202 ? 'occupied' : 'available'}`}>V202</div>
-        <div className={`room ${roomStatuses.V201 ? 'occupied' : 'available'}`}>V201</div>
-      </div>
-
-      {/* Right Column */}
-      <div className="column">
-        <div className={`room ${roomStatuses.V205 ? 'occupied' : 'available'}`}>V205</div>
-        <div className={`room ${roomStatuses.V206 ? 'occupied' : 'available'}`}>V206</div>
-        <div className={`room ${roomStatuses.V207 ? 'occupied' : 'available'}`}>V207</div>
-        <div className={`room ${roomStatuses.V208 ? 'occupied' : 'available'}`}>V208</div>
-        <div className={`room ${roomStatuses.V209 ? 'occupied' : 'available'}`}>V209</div>
-      </div>
+    <div>
+      {renderRooms()}
     </div>
   );
 };
