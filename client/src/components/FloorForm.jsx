@@ -14,7 +14,6 @@ const FloorForm = () => {
   const [branch, setBranch] = useState("");
   const [selectedDate, setSelectedDate] = useState('');
   const [weekday, setWeekday] = useState('');
-  const [timeSlot, setTimeSlot] = useState('');
   const [selectedBuilding, setSelectedBuilding] = useState('');
 const [selectedFloor, setSelectedFloor] = useState('');
 const [startTime, setStartTime] = useState('');

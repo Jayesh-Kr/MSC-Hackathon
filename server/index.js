@@ -1,10 +1,9 @@
 import express from 'express';
 import db from './utils/db.js';
 import userrouter from './routes/UserRouter.js';
+import timetablerouter from './routes/TimeTableRouter.js';
 import cors from 'cors';
 const app = express();
-import addRandom from './addrandom.js';
-addRandom();
 app.use(express.json());
 app.use(cors(
   {
@@ -18,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userrouter );
+app.use('/api/timetable', timetablerouter );
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

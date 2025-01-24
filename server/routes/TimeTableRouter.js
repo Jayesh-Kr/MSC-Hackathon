@@ -1,0 +1,20 @@
+import express from 'express';
+const timetablerouter = express.Router();
+import Timetable from '../model/TeacherTimeTableModel.js';
+
+timetablerouter.post('/timetable', async(req, res) => {
+    try {
+        const {name} = req.body;
+        const timetable = await Timetable.find({name});
+        if(!timetable){
+            res.status(404).json({"error" : "Timetable not found"});
+            return;
+        }
+        res.status(200).json({"Success" : "Timetable retrieved successfully" , "timetable" : timetable});
+    } catch (error) {
+        res.status(500).json({'error':error.message});
+    }
+});
+
+export default timetablerouter;
+
