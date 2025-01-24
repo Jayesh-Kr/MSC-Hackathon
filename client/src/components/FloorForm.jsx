@@ -9,11 +9,11 @@ import TimeTable from "./TimeTable";
 
 
 const FloorForm = () => {
-  const [patient, setPatient] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [id, setId] = useState("");
   const [activeTab, setActiveTab] = useState("profile");
-  const [hostelName, setHostelName] = useState("");
-  const [roomNo, setRoomNo] = useState("");
-  const [branch, setBranch] = useState("");
   const [selectedDate, setSelectedDate] = useState('');
   const [weekday, setWeekday] = useState('');
   const [selectedBuilding, setSelectedBuilding] = useState('');
@@ -23,9 +23,6 @@ const [endTime, setEndTime] = useState('');
 const [timetable, setTimetable] = useState([]);
 const [teacherName, setTeacherName] = useState("");
 
-useEffect(() => {
-  getTimeTable();
-}, []);
 
 
 async function getTimeTable(){
@@ -38,6 +35,13 @@ async function getTimeTable(){
   }
 }
 
+useEffect(() => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  setName(user.name);
+  setEmail(user.email);
+  setContact(user.phone_number);
+  setId(user.university_id);
+}, []);
 
   return (
     <div className="dashboard-container">
@@ -71,10 +75,10 @@ async function getTimeTable(){
           {activeTab === "profile" && (
             <div className="patient-card">
               <div className="patient-info">
-                <p>Name: {branch}</p>
-                <p>Email: {hostelName}</p>
-                <p>Contact: {roomNo}</p>
-                <p>Id: {patient?.contactNumber}</p>
+                <p>Name: {name}</p>
+                <p>Email: {email}</p>
+                <p>Contact: {contact}</p>
+                <p>Id: {id}</p>
               </div>
             </div>
           )}

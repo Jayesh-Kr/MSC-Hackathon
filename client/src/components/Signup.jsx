@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./signup.css"; 
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ const Signup = () => {
   const [universityID, setUniversityID] = useState(""); // University ID (for students)
   const [contactNumber, setContactNumber] = useState(""); // Contact Number (for students)
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   // Function to validate the SRM AP email address
   const isValidSRMEmail = (email) => {
     return email.endsWith("@srmap.edu.in");
@@ -49,6 +50,8 @@ const Signup = () => {
       });
       console.log(response.data);
       alert("Signup Successful");
+      localStorage.setItem("user", JSON.stringify(email,name,universityID,contactNumber));
+      navigate("/dashboard");
       setLoading(false);
     } catch (error) {
       console.log(error.response.data);

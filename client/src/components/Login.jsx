@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./login.css"; 
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -19,6 +19,11 @@ const Login = () => {
         }
       );
       console.log(response);
+      const user = await axios.post("http://localhost:3000/api/users/user", {
+        email,
+      });
+      localStorage.setItem("user", JSON.stringify(user.data.user));
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

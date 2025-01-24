@@ -3,16 +3,19 @@ import Signup from "./components/Signup"
 import FloorForm from "./components/FloorForm";
 import ClassBooking from "./components/ClassBooking";
 import TimeTable from "./components/TimeTable";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
   return (
-    <>
-    {/* <Login/> */}
-    {/* <Signup/> */}
-    <FloorForm/>
-    {/* <ClassBooking/> */}
-    {/* <TimeTable/> */}
-    </>
+<Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<FloorForm />} />
+        {/* Redirect root path to login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </Router>
   )
 }
 

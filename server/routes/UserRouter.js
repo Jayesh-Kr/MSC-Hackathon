@@ -59,4 +59,19 @@ userrouter.post('/login', async (req, res) => {
     }
 });
 
+
+userrouter.post('/user', async (req, res) => {
+    try {
+        const {email} = req.body;
+        if(!email){
+            res.status(401).json({"error" : "User not found"});
+            return;
+        }
+        const response = await User.findOne({email});
+        res.status(200).json({"Success" : "User retrieved successfully" , "user" : response});
+    } catch (error) {
+        res.status(500).json({'error':error.message});
+    }
+});
+
 export default userrouter;  
