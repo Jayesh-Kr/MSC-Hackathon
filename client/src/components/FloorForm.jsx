@@ -12,8 +12,13 @@ const FloorForm = () => {
   const [hostelName, setHostelName] = useState("");
   const [roomNo, setRoomNo] = useState("");
   const [branch, setBranch] = useState("");
-  const [gender, setGender] = useState("");
-
+  const [selectedDate, setSelectedDate] = useState('');
+  const [weekday, setWeekday] = useState('');
+  const [timeSlot, setTimeSlot] = useState('');
+  const [selectedBuilding, setSelectedBuilding] = useState('');
+const [selectedFloor, setSelectedFloor] = useState('');
+const [startTime, setStartTime] = useState('');
+const [endTime, setEndTime] = useState('');
 
 
 
@@ -57,35 +62,76 @@ const FloorForm = () => {
             </div>
           )}
 
-          {activeTab === "book" && (
-            <div className="slot-booking">
-              <h3>Book Slot</h3>
-              <input type="text" placeholder="Date" />
-              <select>
-                <option>Weekday</option>
-                <option>Saturday</option>
-              </select>
-              <select>
-                <option>Morning</option>
-                <option>Afternoon</option>
-              </select>
-              <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-              <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+{activeTab === "book" && (
+  <div className="slot-booking">
+    <h3 id="book-heading">Book Slot</h3>
 
-              </select>
-            </div>
-          )}
+        {/* Date selection */}
+        <input 
+          type="date" 
+          value={selectedDate}
+          onChange={(e) => {
+            setSelectedDate(e.target.value);
+            const date = new Date(e.target.value);
+            const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            setWeekday(weekdays[date.getDay()]);
+          }}
+        />
+    
+    {/* Time slot selection */}
+    <div className="time-slot">
+      <input 
+        type="time" 
+        value={startTime}
+        onChange={(e) => setStartTime(e.target.value)}
+        placeholder="Start Time"
+      />
+      <span>to</span>
+      <input 
+        type="time" 
+        value={endTime}
+        onChange={(e) => setEndTime(e.target.value)}
+        placeholder="End Time"
+      />
+    </div>
+
+
+    {/* Weekday display */}
+    <input 
+      type="text" 
+      value={weekday}
+      readOnly
+      placeholder="Weekday"
+    />
+
+        {/* Building Selection */}
+        <select 
+      value={selectedBuilding}
+      onChange={(e) => setSelectedBuilding(e.target.value)}
+    >
+      <option value="">Select Building</option>
+      <option value="A">V Block</option>
+      <option value="B">SR Block</option>
+      <option value="C">CV Raman Block</option>
+    </select>
+
+      {/* Floor Selection */}
+      <select 
+      value={selectedFloor}
+      onChange={(e) => setSelectedFloor(e.target.value)}
+    >
+      <option value="">Select Floor</option>
+      <option value="1">1st Floor</option>
+      <option value="2">2nd Floor</option>
+      <option value="3">3rd Floor</option>
+      <option value="4">4th Floor</option>
+      <option value="4">5th Floor</option>
+    </select>
+    <div className="btn">
+        Book
+        </div>
+  </div>
+)}
 
 
         </div>

@@ -418,3 +418,54 @@ src/components/PatientDashboard.css * {
     top: 20px;
     right: 200px;
   }
+
+
+  .time-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+
+
+  .slot-booking {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 400px;
+    margin: 20px;
+  }
+  
+  .slot-booking select,
+  .slot-booking input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .time-slot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .time-slot span {
+    font-weight: bold;
+  }
+
+  .btn {
+    background-color: #272715;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding : 10px 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  #book-heading {
+    font-size: 26px;
+  }
