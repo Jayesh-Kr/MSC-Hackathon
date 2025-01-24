@@ -7,7 +7,6 @@ const Signup = () => {
   const [name, setName] = useState(""); // Full Name
   const [universityID, setUniversityID] = useState(""); // University ID (for students)
   const [contactNumber, setContactNumber] = useState(""); // Contact Number (for students)
-  const [hostelRoom, setHostelRoom] = useState(""); // Hostel Name/Room Number (for students)
   const [loading, setLoading] = useState(false);
 
   // Role is fixed to "student", so no user input is needed for role
@@ -95,13 +94,6 @@ const Signup = () => {
             placeholder="Contact Number"
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Hostel Name/Room Number"
-            value={hostelRoom}
-            onChange={(e) => setHostelRoom(e.target.value)}
             required
           />
           <input
