@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const timetableSchema = new mongoose.Schema({
+    name : {
+        type: String,
+        required: true
+    },
     starting_time: {
         type: String,
         required: true

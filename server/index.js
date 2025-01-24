@@ -3,6 +3,8 @@ import db from './utils/db.js';
 import userrouter from './routes/UserRouter.js';
 import cors from 'cors';
 const app = express();
+import addRandom from './addrandom.js';
+addRandom();
 app.use(express.json());
 app.use(cors(
   {
