@@ -469,3 +469,59 @@ src/components/PatientDashboard.css * {
   #book-heading {
     font-size: 26px;
   }
+
+
+
+  /* ----------------------------------------------- */
+
+  .faculty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .faculty h3 {
+    color: black;
+    font-size: 20px; /* Average size */
+    margin-bottom: 10px;
+  }
+  
+  .faculty input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  
+  .faculty button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .faculty button:hover {
+    background-color: #45a049;
+  }
+
+  .faculty input {
+    padding: 12px 15px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 90000px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .faculty input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    outline: none;
+  }
