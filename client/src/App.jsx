@@ -1,8 +1,6 @@
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import FloorForm from "./components/FloorForm";
-import ClassBooking from "./components/ClassBooking";
-import TimeTable from "./components/TimeTable";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
