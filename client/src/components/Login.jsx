@@ -1,10 +1,29 @@
 import { useState } from "react";
 import "./login.css"; 
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/users/login",
+        {
+          email,
+          password,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
   return (
     <div className="login-page">
       <div className="login-left">
@@ -20,7 +39,7 @@ const Login = () => {
         <div className="login-content">
           <p className="quote">Please Use Your University Id only</p>
 
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email"
@@ -43,7 +62,7 @@ const Login = () => {
           <p>
             Don’t have an account?{" "}
             <span className="signup-link">
-              Sign Up
+              {loading ? "Logining" : "Login"}
             </span>
           </p>
         </div>

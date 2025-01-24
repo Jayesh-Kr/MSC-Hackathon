@@ -1,6 +1,8 @@
 import express from 'express';
 const userrouter = express.Router();
 import User from '../model/UserModel.js';
+import {z} from 'zod';
+import bcrypt from 'bcrypt';
 
 userrouter.post('/signup', async (req, res) => {
     try {
