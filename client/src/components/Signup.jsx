@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./signup.css"; // Import your CSS file for styling
+import "./signup.css"; 
+import axios from "axios";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -8,9 +9,6 @@ const Signup = () => {
   const [universityID, setUniversityID] = useState(""); // University ID (for students)
   const [contactNumber, setContactNumber] = useState(""); // Contact Number (for students)
   const [loading, setLoading] = useState(false);
-
-  // Role is fixed to "student", so no user input is needed for role
-//   const role = "student"; // Force role to "student"
 
   // Function to validate the SRM AP email address
   const isValidSRMEmail = (email) => {
@@ -40,6 +38,22 @@ const Signup = () => {
       alert("Password must be at least 6 characters long.");
       setLoading(false);
       return;
+    }
+    try {
+      const response = await axios.post("http://localhost:3000/api/users/signup", {
+        universityID,
+        name,
+        email,
+        password,
+        contactNumber
+      });
+      console.log(response.data);
+      alert("Signup Successful");
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response.data);
+      alert("Signup Failed");
+      setLoading(false);
     }
 
   };
@@ -111,7 +125,7 @@ const Signup = () => {
         </form>
       </div>
 
-      <footer>© IntellectNest 2024</footer>
+      <footer>© SRM 2025</footer>
     </div>
   );
 };
