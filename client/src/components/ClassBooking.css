@@ -1,0 +1,32 @@
+.floor-layout {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .room {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
+  
+  .room.available {
+    background-color: green;
+  }
+  
+  .room.occupied {
+    background-color: red;
+  }
