@@ -6,7 +6,7 @@ import {
 import axios from "axios";
 import "./floorform.css";
 import TimeTable from "./TimeTable";
-
+import { useNavigate } from 'react-router-dom';
 
 const FloorForm = () => {
   const [name, setName] = useState("");
@@ -23,6 +23,8 @@ const [endTime, setEndTime] = useState('');
 const [timetable, setTimetable] = useState([]);
 const [teacherName, setTeacherName] = useState("");
 
+
+const navigate = useNavigate();
 
 
 async function getTimeTable(){
@@ -172,7 +174,7 @@ useEffect(() => {
       <option value="4">4th Floor</option>
       <option value="4">5th Floor</option>
     </select>
-    <div className="btn">
+    <div className="btn" onClick={() => navigate('/timetable')}>
         Book
         </div>
   </div>
