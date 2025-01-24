@@ -30,22 +30,28 @@ This portal allows **teachers to book empty class slots** and **students to view
 ## 📂 Folder Structure
 
 
-👥 Team Members
+## 👥 Team Members
 We are a dedicated team working together to bring this solution to life:
 
-Member 1 Name: Jayesh Krishna
-Member 2 Name: Lakshya Singh
-Member 3 Name: Muthu Amuthan
-Member 4 Name: Shivangi Sharma
-Member 5 Name: Tarun Karma
+Member 1 Name: Jayesh Krishna                                                                                
+Member 2 Name: Lakshya Singh                                                                                                          
+Member 3 Name: Muthu Amuthan                                                                                              
+Member 4 Name: Shivangi Sharma                                                                                       
+Member 5 Name: Tarun Karma                                                         
 Feel free to connect with us for questions or collaborations!
 
 
-🌱 Future Scope
+## 🌱 Future Scope
 - Mobile app integration for better accessibility.
 - Analytics and insights for timetable optimization.
 - Feedback system for improving the portal.
 
-📧 Contact
+## 🏆 Hackathon Submission
+This project is part of the <hack>X<msc> Hackathon under the theme Campus Solutions.
+
+## 📄 License
+This project is licensed under the MIT License.
+
+## 📧 Contact
 For queries or feedback, feel free to reach out at your
 
