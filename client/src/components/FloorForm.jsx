@@ -1,9 +1,11 @@
-import { useState } from "react";
+import {useState,useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar
 } from "@fortawesome/free-solid-svg-icons"; 
+import axios from "axios";
 import "./floorform.css";
+import TimeTable from "./TimeTable";
 
 
 const FloorForm = () => {
@@ -18,7 +20,23 @@ const FloorForm = () => {
 const [selectedFloor, setSelectedFloor] = useState('');
 const [startTime, setStartTime] = useState('');
 const [endTime, setEndTime] = useState('');
+const [timetable, setTimetable] = useState([]);
+const [teacherName, setTeacherName] = useState("");
 
+useEffect(() => {
+  getTimeTable();
+}, []);
+
+
+async function getTimeTable(){
+  try {
+      const response = await axios.post("http://localhost:3000/api/timetable/timetable",{name : teacherName});
+      setTimetable(response.data.timetable);
+      console.log(response);
+  } catch (error) {
+      console.log(error);
+  }
+}
 
 
   return (
@@ -62,25 +80,27 @@ const [endTime, setEndTime] = useState('');
           )}
 {
   activeTab === "faculty" && ( 
+    <>
     <div className="faculty">
       <input 
+      value={teacherName}
+      onChange={(e) => setTeacherName(e.target.value)}
         type="text" 
         placeholder="Enter Teacher's Name" 
         onKeyPress={(e) => {
           if (e.key === 'Enter') {
-            window.location.href = `/timetable/${e.target.value}`;
+            getTimeTable();
           }
         }}
       />
       <button 
-        onClick={() => {
-          const teacherName = document.querySelector('.faculty input').value;
-          window.location.href = `/timetable/${teacherName}`;
-        }}
+        onClick={getTimeTable}
       >
         Search
       </button>
     </div>
+    <TimeTable timetable={timetable}/>
+    </>
   )
 }
 {activeTab === "book" && (

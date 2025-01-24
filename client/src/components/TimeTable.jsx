@@ -1,20 +1,8 @@
-import { useState,useEffect } from "react";
-import axios from "axios";
 import "./timetable.css";
-const TimeTable = () => {
-    const [timetable, setTimetable] = useState([]);
-   async function getTimeTable(){
-        try {
-            const response = await axios.post("http://localhost:3000/api/timetable/timetable",{name : "Jayesh"});
-            setTimetable(response.data.timetable);
-            console.log(response);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    useEffect(() => {
-        getTimeTable();
-    }, []);
+// eslint-disable-next-line react/prop-types
+const TimeTable = ({timetable}) => {
+
+
   return (
     <div className="timetable-container">
       <h1 className="timetable-title">Timetable</h1>

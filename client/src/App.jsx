@@ -9,9 +9,9 @@ const App = () => {
     <>
     {/* <Login/> */}
     {/* <Signup/> */}
-    {/* <FloorForm/> */}
+    <FloorForm/>
     {/* <ClassBooking/> */}
-    <TimeTable/>
+    {/* <TimeTable/> */}
     </>
   )
 }
