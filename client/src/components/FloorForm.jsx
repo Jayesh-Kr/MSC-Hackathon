@@ -36,7 +36,7 @@ const [endTime, setEndTime] = useState('');
             <li onClick={() => setActiveTab("book")}>
               <FontAwesomeIcon icon={faCalendar} className="icon" /> Book Slot
             </li>
-            <li onClick={() => setActiveTab("profile")}>
+            <li onClick={() => setActiveTab("faculty")}>
               <FontAwesomeIcon icon={faCalendar} className="icon" /> Faculty
             </li>
           </ul>
@@ -60,7 +60,29 @@ const [endTime, setEndTime] = useState('');
               </div>
             </div>
           )}
-
+{
+  activeTab === "faculty" && ( 
+    <div className="faculty">
+      <input 
+        type="text" 
+        placeholder="Enter Teacher's Name" 
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            window.location.href = `/timetable/${e.target.value}`;
+          }
+        }}
+      />
+      <button 
+        onClick={() => {
+          const teacherName = document.querySelector('.faculty input').value;
+          window.location.href = `/timetable/${teacherName}`;
+        }}
+      >
+        Search
+      </button>
+    </div>
+  )
+}
 {activeTab === "book" && (
   <div className="slot-booking">
     <h3 id="book-heading">Book Slot</h3>
