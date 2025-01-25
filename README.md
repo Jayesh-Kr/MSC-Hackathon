@@ -1,4 +1,4 @@
-# TTP  📅
+# TechTitians  📅
 
 A web-based solution to streamline schedule management for teachers and students.  
 This portal allows **teachers to book empty class slots** and **students to view their respective faculty's timetable**, ensuring efficient use of resources and avoiding time conflicts.
@@ -20,14 +20,12 @@ This portal allows **teachers to book empty class slots** and **students to view
 ---
 
 ## 🚀 Technology Stack
-- **Frontend:** HTML, CSS, JavaScript (or React)
-- **Backend:** Node.js / Python Flask / Django
-- **Database:** MySQL / MongoDB
-- **Hosting:** AWS / Heroku / Vercel
+- **Frontend:** HTML, CSS,  React JavaScript 
+- **Backend:** Node.js,Express
+- **Database:**  MongoDB
 
 ---
 
-## 📂 Folder Structure
 
 
 ## 👥 Team Members
@@ -45,6 +43,8 @@ Feel free to connect with us for questions or collaborations!
 - Mobile app integration for better accessibility.
 - Analytics and insights for timetable optimization.
 - Feedback system for improving the portal.
+- improving privacy for teachers.
+- the app will also enable club heads or convenors to book auditoriums and theaters to organize an event.
 
 ## 🏆 Hackathon Submission
 This project is part of the <hack>X<msc> Hackathon under the theme Campus Solutions.
@@ -53,5 +53,5 @@ This project is part of the <hack>X<msc> Hackathon under the theme Campus Soluti
 This project is licensed under the MIT License.
 
 ## 📧 Contact
-For queries or feedback, feel free to reach out at your
+For queries or feedback, feel free to reach out to the developers.
 
