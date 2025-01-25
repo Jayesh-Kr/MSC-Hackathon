@@ -17,15 +17,32 @@ timetablerouter.post('/timetable', async(req, res) => {
     }
 });
 
+timetablerouter.post('/timetable2', async(req, res) => {
+    try {
+        const {block_name, floor, date} = req.body;
+        const timetable = await Timetable.find({block_name, floor: parseInt(floor), date});
+        if(!timetable || timetable.length === 0){
+            res.status(404).json({"error" : "Timetable not found"});
+            return;
+        }
+        res.status(200).json({"Success" : "Timetable retrieved successfully" , "timetable" : timetable});
+    } catch (error) {
+        res.status(500).json({'error':error.message});
+    }
+});
+   
+
 timetablerouter.post('/getLayout', async(req, res) => {
     try {
         const { block_name, floor } = req.body;
-        const layout = await Layout.find({ block_name, floor });
+        // console.log("Received request:", { block_name, floor }); // Debug log
+        const layout = await Layout.find({ block_name, floor: parseInt(floor) });
+        // console.log("Found layout:", layout); // Debug log
         if(!layout){
-            res.status(404).json({"error" : "Layout not found"});
-            return;
+            return res.status(404).json({"error" : "Layout not found"});
+            
         }
-        if(!layout){
+        if(!layout || layout.length === 0){
             res.status(404).json({"error" : "Layout not found"});
             return;
         }

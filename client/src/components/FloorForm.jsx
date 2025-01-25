@@ -25,6 +25,16 @@ const [teacherName, setTeacherName] = useState("");
 
 
 const navigate = useNavigate();
+const handleBooking = () => {
+  localStorage.setItem("room", JSON.stringify({
+    selectedFloor,
+    selectedBuilding,
+    weekday,
+    startTime,
+    endTime
+  }));
+  navigate('/timetable');
+};
 
 
 async function getTimeTable(){
@@ -157,9 +167,9 @@ useEffect(() => {
       onChange={(e) => setSelectedBuilding(e.target.value)}
     >
       <option value="">Select Building</option>
-      <option value="A">V Block</option>
-      <option value="B">SR Block</option>
-      <option value="C">CV Raman Block</option>
+      <option value="V">V Block</option>
+      <option value="SR">SR Block</option>
+      <option value="CV">CV Raman Block</option>
     </select>
 
       {/* Floor Selection */}
@@ -174,7 +184,7 @@ useEffect(() => {
       <option value="4">4th Floor</option>
       <option value="4">5th Floor</option>
     </select>
-    <div className="btn" onClick={() => {localStorage.setItem("room", JSON.stringify(selectedFloor,selectedBuilding,weekday)); navigate('/timetable')}}>
+    <div className="btn" onClick={handleBooking}>
         Book
         </div>
   </div>

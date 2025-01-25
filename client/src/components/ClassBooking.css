@@ -30,3 +30,50 @@
   .room.occupied {
     background-color: red;
   }
+
+
+
+  /* --------------------------------------------------------------- */
+  /* Popup Component */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .room {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  .room.occupied {
+    background-color: red;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  .room.available {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+  }
+  
