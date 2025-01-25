@@ -50,7 +50,7 @@ const Signup = () => {
       });
       console.log(response.data);
       alert("Signup Successful");
-      localStorage.setItem("user", JSON.stringify(email,name,universityID,contactNumber));
+      localStorage.setItem("user", JSON.stringify({email,name,university_id:universityID,phone_number:contactNumber}));
       navigate("/dashboard");
       setLoading(false);
     } catch (error) {

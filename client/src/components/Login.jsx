@@ -42,7 +42,7 @@ const Login = () => {
 
       <div className="login-right">
         <div className="login-content">
-          <p className="quote">Please Use Your University Id only</p>
+          <p className="quote">Please Use Your University email only</p>
 
           <form className="login-form" onSubmit={handleSubmit}>
             <input
@@ -60,14 +60,14 @@ const Login = () => {
               required
             />
             <button type="submit">
-              Login
+              {loading ? "Logining" : "Login"}
             </button>
           </form>
 
           <p>
             Don’t have an account?{" "}
-            <span className="signup-link">
-              {loading ? "Logining" : "Login"}
+            <span className="signup-link" onClick={()=>navigate("/signup")}>
+              Signup
             </span>
           </p>
         </div>
